@@ -8,7 +8,7 @@ import { CreateUserDatabase } from "../database/create-log-database.js";
 export class Test {
     async execute(value) {
 
-        const { type, url, quantidade, tempo, body } = value;
+        const { type, url, quantidade, tempo, idTeste } = value;
 
         for (let index = 1; index < quantidade; index++) {
             await new Promise((resolve) => setTimeout(resolve, tempo));
@@ -16,16 +16,16 @@ export class Test {
             try {
                 let response = {};
                 if (type == "get" || type == "GET") {
-                    response = await new TestGetApi().execute(url, body);
+                    response = await new TestGetApi().execute(url, body, idTeste);
                 }
                 if (type == "post" || type == "POST") {
-                    response = await new TestPostApi().execute(url, body);
+                    response = await new TestPostApi().execute(url, body, idTeste);
                 }
                 if (type == "put" || type == "PUT") {
-                    response = await new TestPutApi().execute(url, body);
+                    response = await new TestPutApi().execute(url, body, idTeste);
                 }
                 if (type == "delete" || type == "DELETE") {
-                    response = await new TestDeleteApi().execute(url, body);
+                    response = await new TestDeleteApi().execute(url, body, idTeste);
                 }
                 if (!response.status) {
                     throw new Error(response)

@@ -1,4 +1,4 @@
-import { prisma } from "../../Prisma/prisma";
+import { prisma } from "../prisma/prisma.js";
 
 export class CreateUserDatabase {
     async execute(value) {

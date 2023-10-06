@@ -1,9 +1,9 @@
 import axios from "axios";
 
-export class TestPostApi {
+export class TestPutApi {
     async execute(url, body) {
         try {
-            const response = await axios.post(url, body);
+            const response = await axios.put(url, body);
             return {
                 status: true,
                 data: response

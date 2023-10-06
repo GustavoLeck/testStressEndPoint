@@ -37,7 +37,6 @@ export class Test {
                     console.log("   =>Log de erro criado com sucesso");
                 } else {
                     console.log("   =>Erro ao criar log");
-
                 }
             }
         }

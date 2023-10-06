@@ -2,7 +2,7 @@ import { TestGetApi } from "../api/test-get-api.js";
 import { TestPostApi } from "../api/test-post-api.js";
 import { TestPutApi } from "../api/test-put-api.js";
 import { TestDeleteApi } from "../api/test-delete-api.js";
-
+import { CreateUserDatabase } from "../database/create-log-database.js";
 
 
 export class Test {
@@ -28,10 +28,17 @@ export class Test {
                     response = await new TestDeleteApi().execute(url, body);
                 }
                 if (!response.status) {
-                    throw new Error(response.data)
+                    throw new Error(response)
                 }
             } catch (erro) {
-                console.log(erro)
+                const createLog = await new CreateUserDatabase().execute(erro)
+                console.log("-------------------------------------------------");
+                if (createLog.status) {
+                    console.log("   =>Log de erro criado com sucesso");
+                } else {
+                    console.log("   =>Erro ao criar log");
+
+                }
             }
         }
         return;

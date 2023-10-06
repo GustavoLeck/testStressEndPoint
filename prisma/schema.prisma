@@ -10,7 +10,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Log {
+model logErro {
   id      String  @id @default(auto()) @map("_id") @db.ObjectId
   idTeste String
   status  Boolean

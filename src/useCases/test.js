@@ -8,10 +8,11 @@ import { CreateUserDatabase } from "../database/create-log-database.js";
 export class Test {
     async execute(value) {
 
-        const { type, url, quantidade, tempo, idTeste } = value;
+        const { type, url, quantidade, tempo, idTeste, body } = value;
 
         for (let index = 1; index < quantidade; index++) {
             await new Promise((resolve) => setTimeout(resolve, tempo));
+            console.log("-------------------------------------------------");
             console.log("Operação: " + index);
             try {
                 let response = {};
@@ -30,9 +31,11 @@ export class Test {
                 if (!response.status) {
                     throw new Error(response)
                 }
+                console.log("Teste Realizado com sucesso")
             } catch (erro) {
-                const createLog = await new CreateUserDatabase().execute(erro)
-                console.log("-------------------------------------------------");
+                console.log(erro)
+                const erroFormatdo = JSON.stringify(erro);
+                const createLog = await new CreateUserDatabase().execute(erroFormatdo)
                 if (createLog.status) {
                     console.log("   =>Log de erro criado com sucesso");
                 } else {

@@ -9,17 +9,15 @@ export class Test {
                 let response = {};
                 if (type == "get" || type == "GET") {
                     response = await new TestGetApi().execute(url);
-
                 }
                 if (type == "post" || type == "POST") {
                     response = await new TestPostApi().execute(url);
-
                 }
                 if (!response.status) {
                     throw new Error(response.data)
                 }
             } catch (erro) {
-                // console.log(erro)
+                console.log(erro)
             }
         }
         return;

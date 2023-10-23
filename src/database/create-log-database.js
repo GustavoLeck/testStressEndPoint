@@ -1,13 +1,13 @@
 import { prisma } from "../prisma/prisma.js";
 
-export class CreateUserDatabase {
+export class CreateLogDatabase {
     async execute(value) {
         try {
             await prisma.logErro.create({
                 data: {
                     idTeste: value?.idTeste,
                     status: value?.status,
-                    data: value?.data
+                    data: JSON.stringify(value?.data)
                 }
             });
             return { status: true, message: "Log criado com sucesso." };

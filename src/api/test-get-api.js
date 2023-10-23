@@ -12,7 +12,7 @@ export class TestGetApi {
         } catch (error) {
             return {
                 status: false,
-                data: JSON.stringify(error),
+                data: error,
                 idTeste: idTeste
             }
         }
